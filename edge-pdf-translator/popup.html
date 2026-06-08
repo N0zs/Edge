@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="title">翻译助手</span>
+      <label class="switch">
+        <input type="checkbox" id="toggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="section">
+      <label class="label">翻译模式</label>
+      <div class="segmented" id="mode-selector">
+        <button class="seg-item active" data-mode="smart">智能标注</button>
+        <button class="seg-item" data-mode="wordlist">单词列表</button>
+        <button class="seg-item" data-mode="full">全文翻译</button>
+      </div>
+    </div>
+    <div id="vocab-section" class="section">
+      <label class="label">词汇等级</label>
+      <div class="segmented" id="vocab-selector">
+        <button class="seg-item" data-level="cet4">CET-4</button>
+        <button class="seg-item" data-level="cet6">CET-6</button>
+        <button class="seg-item" data-level="ielts">雅思</button>
+        <button class="seg-item" data-level="gaokao">高考</button>
+        <button class="seg-item" data-level="gre">GRE</button>
+      </div>
+    </div>
+    <div class="section">
+      <label class="label">翻译引擎</label>
+      <select id="provider">
+        <option value="llm">LLM (AI 翻译)</option>
+        <option value="deepl">DeepL</option>
+        <option value="youdao">有道翻译</option>
+      </select>
+    </div>
+    <div id="llm-settings" class="section">
+      <label class="label">API 地址</label>
+      <input type="text" id="llm-endpoint" class="input" placeholder="https://api.openai.com/v1">
+      <label class="label" style="margin-top:8px">API Key</label>
+      <input type="password" id="llm-key" class="input" placeholder="sk-...">
+      <label class="label" style="margin-top:8px">模型</label>
+      <input type="text" id="llm-model" class="input" placeholder="gpt-4o-mini">
+    </div>
+    <div id="deepl-settings" class="section" style="display:none">
+      <label class="label">DeepL API Key</label>
+      <input type="password" id="deepl-key" class="input" placeholder="输入 DeepL API Key">
+    </div>
+    <div id="youdao-settings" class="section" style="display:none">
+      <label class="label">应用 ID (App Key)</label>
+      <input type="text" id="youdao-appkey" class="input" placeholder="输入应用 ID">
+      <label class="label" style="margin-top:8px">应用密钥 (App Secret)</label>
+      <input type="password" id="youdao-secret" class="input" placeholder="输入应用密钥">
+    </div>
+    <div class="section">
+      <label class="label">单词限制</label>
+      <select id="word-limit">
+        <option value="0">不限制</option>
+        <option value="500">500 词</option>
+        <option value="1000">1000 词</option>
+        <option value="2000">2000 词</option>
+        <option value="5000">5000 词</option>
+      </select>
+    </div>
+    <div id="token-section" class="section">
+      <label class="label">Token 限制 (LLM)</label>
+      <select id="token-limit">
+        <option value="0">不限制</option>
+        <option value="1024">1024</option>
+        <option value="2048">2048</option>
+        <option value="4096">4096</option>
+        <option value="8192">8192</option>
+      </select>
+    </div>
+    <div class="section" style="display:flex;gap:8px">
+      <button id="save-btn" style="flex:1">保存设置</button>
+      <button id="test-btn" class="test-btn">测试连接</button>
+    </div>
+    <div id="status" class="status"></div>
+    <div class="footer">开启后自动翻译，点击右侧绿色按钮切换</div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

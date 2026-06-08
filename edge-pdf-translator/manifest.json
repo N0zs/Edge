@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "翻译助手",
+  "version": "1.1.0",
+  "description": "沉浸式网页翻译，支持 LLM / DeepL / 有道 API，自动翻译",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://api-free.deepl.com/*",
+    "file:///*",
+    "https://openapi.youdao.com/*",
+    "http://*/*",
+    "https://*/*",
+    "https://api.deepl.com/*",
+    "https://api.openai.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_title": "翻译助手"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [],
+  "icons": {
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}
